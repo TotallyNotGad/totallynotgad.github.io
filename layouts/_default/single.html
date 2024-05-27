@@ -1,0 +1,22 @@
+{{ define "main" }}
+    <article class="fullwidth">
+        <h1 data-text="{{ .Title }}" class="glitch">{{ .Title }}</h1>
+        <section>
+            {{ if not (eq (.Date.Format "January 1, 0001") "January 1, 0001") }}
+            Last Updated: <span>{{ .Date.Format "January 2, 2006"  }}</span> <br> {{ end }}
+            {{ if (.Param "projectPage")}}{{ if not (eq (.Param "projectPage") "None") }}
+            <a href='{{ .Param "projectPage" }}'>Project Code</a> {{ end }}{{ end }}
+
+            {{ if not (eq (.Param "homepage") "None") }}{{ if isset .Params "homepage" }}
+            | <a href='{{ .Param "homepage" }}'>Homepage</a> {{ end }}{{ end }}
+        </section>
+        <hr>
+            {{ if gt .WordCount 400 }}
+                <br>
+                <h2 class="glitch" data-text="Table Of Contents">Table Of Contents</h2>
+                {{.TableOfContents}}
+                <hr />
+            {{ end }}
+        <p>{{ .Content }}</p>
+    </article>
+{{ end }}

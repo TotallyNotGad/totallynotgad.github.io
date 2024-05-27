@@ -1,0 +1,7 @@
+baseURL = 'https://TotallyNotGad.github.io/'
+title = "Gads Blog"
+
+[markup.highlight]
+style = 'api'
+
+[taxonomies]

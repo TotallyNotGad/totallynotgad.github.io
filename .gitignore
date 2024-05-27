@@ -1,0 +1,12 @@
+__pycache__/
+resources/
+page_gen/
+public/
+
+.hugo_build.lock
+Pipfile.lock
+hugo
+.env
+
+content/
+temp/

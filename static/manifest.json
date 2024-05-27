@@ -1,0 +1,7 @@
+{
+    "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+    "name": "Blog",
+    "background_color": "#1a1a1a",
+    "theme_color": "#ededed",
+    "display": "standalone"
+}

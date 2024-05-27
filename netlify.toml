@@ -1,0 +1,11 @@
+[build]
+  command = "make build"
+  publish = "public"
+
+[build.enviornment]
+  HUGO_VERSION = "v0.102.0"
+
+[[redirects]]
+  from = "/*"
+  to = "/404/"
+  status = 404 

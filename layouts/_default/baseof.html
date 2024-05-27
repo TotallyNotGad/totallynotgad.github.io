@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic setup stuff (not sure this is nessasary, ide just includes it) -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Support for those card thingies -->
+    <meta property="og:title" content="{{ .Title }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ .Site.Title }}" />
+    <meta property="og:image" content="{{ .Site.BaseURL }}favicon.png" />
+    
+    {{ if .Summary }}
+      <meta name="description" content="{{ .Summary }}" />
+      <meta property="og:description" content="{{ .Summary }}"/>
+    {{  end }}
+    
+    <!-- Icons and PWA stuff -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="/favicon.png" />
+    
+    <link rel="stylesheet" href="/normalize.css" />
+    <link rel="stylesheet" href="/styles.css" />
+
+    <!-- RSS Reader Stuff -->
+    {{ range .AlternativeOutputFormats }}
+      {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end }}
+
+    
+    <script>
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('/js/sw.js')
+      }
+    </script>
+
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+  </head>
+  <body>
+    {{ partial "navbar.html" . }}
+
+    <main>{{ block "main" . }}{{ end }}</main>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<header class="nav">
+    <a href="/" class="brand">
+      <span>{{ .Site.Home.Title }}</span>
+    </a>
+
+    <input class="menu-btn" type="checkbox" id="menu-btn">
+
+    <nav class="menu">
+        {{ range .Site.Home.Pages }}
+            {{ if and (ne .Title "index") (ne .Title "404 Not Found")}}
+                <a href="{{ .Permalink }}" class="pseudo">{{ .Title }}</a>
+            {{ end }}
+        {{ end }}
+    </nav>
+
+    <label class="menu-icon" for="menu-btn">☰</label>
+
+</header>

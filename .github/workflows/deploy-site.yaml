@@ -1,0 +1,39 @@
+name: Deploy On GHPages
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest 
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v4
+      with:
+        cache: "pipenv"
+    - uses: tiagovrtr/actions-pipenv@v1
+    - name: Setup Pipenv
+      run: pipenv install
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: '0.102.0'
+        extended: true
+
+    - name: Run Build
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_USERNAME: TotallyNotGad
+        BLOG_REPO: https://github.com/TotallyNotGad/blog-articles.git
+      run: pipenv run make build
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3.9.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./public

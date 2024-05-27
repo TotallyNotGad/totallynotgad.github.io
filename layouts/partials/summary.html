@@ -1,0 +1,10 @@
+<a href="{{ .Permalink }}" class="invislink">
+    <article>
+        <h2 class="glitch" data-text="{{.Title}}">{{ .Title }}</h2> <span>{{ .Date.Format "January 2, 2006"  }}</span>
+        {{ if not (eq .Summary "None") }}
+            <p>{{ .Summary }}</p>
+        {{ else }}
+            <br><br>
+        {{ end }}
+    </article>
+</a>
