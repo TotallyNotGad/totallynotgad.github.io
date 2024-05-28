@@ -1,17 +1,9 @@
 :root {
-    --surface: hsl(0, 0%, 6%);
-    --highlight: hsl(0, 0%, 83%);
-    --underlay: hsl(0, 0%, 53%);
+  --surface: white;
+  --highlight: hsl(180, 8%, 3%);
+  --underlay: hsl(180, 8%, 13%);
 
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --surface: hsl(55, 14%, 90%);
-    --highlight: hsl(180, 8%, 3%);
-    --underlay: hsl(180, 8%, 13%);
-  }
-}
+} 
 
 body {
     width: clamp(50vw, 900px, 90vw);

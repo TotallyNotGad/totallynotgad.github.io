@@ -10,13 +10,13 @@
             {{ if not (eq (.Param "homepage") "None") }}{{ if isset .Params "homepage" }}
             | <a href='{{ .Param "homepage" }}'>Homepage</a> {{ end }}{{ end }}
         </section>
-        <hr>
+        <hr><!--
             {{ if gt .WordCount 400 }}
                 <br>
                 <h2 class="glitch" data-text="Table Of Contents">Table Of Contents</h2>
                 {{.TableOfContents}}
                 <hr />
-            {{ end }}
+            {{ end }} -->
         <p>{{ .Content }}</p>
     </article>
 {{ end }}
