@@ -30,6 +30,16 @@ class Category():
         self.children = []
         self.body = body
 
+    def newArticle(self, name="", frontmatter={}, body="", filename=""):
+        article = Article(name, frontmatter, body, filename)
+        self.children.append(article)
+        return article
+
+    
+    def newCategory(self, name="", frontmatter={}, body=""):
+        category = Category(name, frontmatter, body)
+        self.children.append(category)
+        return category
 
     def save(self, parent_folder="."):
         folder_path = os.path.join(parent_folder, self.name)
