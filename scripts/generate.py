@@ -99,14 +99,15 @@ def addFrontmatter(text, path):
       summary = ""
       body = text
 
-
+    lastUpdated = subprocess.run(['cd temp && git log --pretty="format:%ct" "' + path + '"' + " | head -1"], shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8').strip()
     publishedDate = subprocess.run(['cd temp && git log --pretty="format:%ct" --reverse "' + path + '"' + " | head -1"], shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8').strip()
 
     # Return a formatted article with the frontmatter added
     return str(content.Article(frontmatter = {
       'title': path.split('.')[0],
       'summary': summary,
-      'date': str(publishedDate)
+      'date': str(publishedDate),
+      'lastUpdated': str(lastUpdated)
     }, body = body))
 
 obsidian_to_hugo = ObsidianToHugo(

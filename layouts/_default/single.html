@@ -2,8 +2,15 @@
     <article class="fullwidth">
         <h1 data-text="{{ .Title }}" class="glitch">{{ .Title }}</h1>
         <section>
-            {{ if not (eq (.Date.Format "January 1, 0001") "January 1, 0001") }}
-            Last Updated: <span>{{ .Date.Format "January 2, 2006"  }}</span> <br> {{ end }}
+            {{ if not (eq (.Date.Format "January 2 2006") "January 2 2006") }}
+            Published: <span>{{ .Date.Format "January 2 2006"  }}</span> {{ end }}
+
+            
+            {{ if not (eq (.Date.Format "January 2 2006") (time.Format  "January 2 2006" (cast.ToInt (.Param "lastUpdated")))) }}
+            | Last Updated: <span>{{ time.Format  "January 2 2006" (cast.ToInt (.Param "lastUpdated")) }}</span> {{ end }}<!-- (time.AsTime (cast.ToInt )) <span>(time.AsTime (.Param "lastUpdated")).Format "January 1 0001" }}</span> -->
+
+            <br>
+            
             {{ if (.Param "projectPage")}}{{ if not (eq (.Param "projectPage") "None") }}
             <a href='{{ .Param "projectPage" }}'>Project Code</a> {{ end }}{{ end }}
 
