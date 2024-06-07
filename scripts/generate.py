@@ -33,7 +33,7 @@ for repository in ghProfile.pinnedProjects:
 
 root.save()
 
-shutil.rmtree('./temp')
+shutil.rmtree('./temp', ignore_errors=True)
 os.system('git clone ' + os.getenv('BLOG_REPO') + " temp")
 
 from obsidian_to_hugo import ObsidianToHugo
