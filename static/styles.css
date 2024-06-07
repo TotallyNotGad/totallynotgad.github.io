@@ -133,6 +133,21 @@ figcaption {
   width: 100%
 }
 
+button {
+  background-color: var(--highlight);
+  border: none;
+  border: 1px var(--highlight);
+  color: var(--surface)
+
+}
+
+blockquote {
+  border-left: 5px solid var(--highlight);
+  margin: 0;
+  
+  padding-left: 10px
+}
+
 @media (max-device-width: 400px) {
     .hero {
       display: flex;

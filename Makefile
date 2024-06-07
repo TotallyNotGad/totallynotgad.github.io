@@ -3,7 +3,7 @@ build:
 	hugo --gc --minify
 
 serve:
-	./hugo serve -p 8006
+	hugo serve -p 8006
 
 generate:
-	python ./scripts/generate.py
+	pipenv run python ./scripts/generate.py

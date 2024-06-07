@@ -4,4 +4,8 @@ title = "Gads Blog"
 [markup.highlight]
 style = 'api'
 
+[markup.goldmark.renderer]
+    unsafe=true
+
 [taxonomies]
+
